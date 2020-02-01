@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeboxOS", "FreeboxOS\FreeboxOS.csproj", "{E7037B2B-FFEA-4156-A380-C0500F3EAE5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{096A293C-1213-4153-B324-8EC6CB243AC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7037B2B-FFEA-4156-A380-C0500F3EAE5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7037B2B-FFEA-4156-A380-C0500F3EAE5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7037B2B-FFEA-4156-A380-C0500F3EAE5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7037B2B-FFEA-4156-A380-C0500F3EAE5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{096A293C-1213-4153-B324-8EC6CB243AC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{096A293C-1213-4153-B324-8EC6CB243AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{096A293C-1213-4153-B324-8EC6CB243AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{096A293C-1213-4153-B324-8EC6CB243AC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ECB65F69-C139-4F93-A429-8858E0198F9F}
+	EndGlobalSection
+EndGlobal

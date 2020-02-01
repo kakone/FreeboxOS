@@ -14,9 +14,7 @@ namespace FreeboxOS.TV
         /// </summary>
         /// <param name="dateTimeOffset">a date</param>
         /// <returns>the program corresponding to the date/time</returns>
-        public Program this[DateTimeOffset dateTimeOffset]
-        {
-            get { return Values.FirstOrDefault(p => dateTimeOffset >= p.StartDate && dateTimeOffset <= p.EndDate); }
-        }
+        public Program this[DateTimeOffset dateTimeOffset] =>
+            Values.FirstOrDefault(p => dateTimeOffset >= p.StartDate && dateTimeOffset <= p.EndDate);
     }
 }

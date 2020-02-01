@@ -2,6 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Stéphane Mitermite</Authors>
+    <Company>Stéphane Mitermite</Company>
+    <Description>Freebox OS TV API</Description>
+    <PackageLicenseExpression>LGPL-2.1-only</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/kakone/freeboxos</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/kakone/freeboxos</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>freebox</PackageTags>
+    <Copyright></Copyright>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

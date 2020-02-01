@@ -48,18 +48,12 @@ namespace FreeboxOS.TV
         /// <summary>
         /// Gets the start date
         /// </summary>
-        public DateTimeOffset StartDate
-        {
-            get { return (DateTimeOffset)(_startDate ?? (_startDate = DateTimeOffset.FromUnixTimeSeconds(Date))); }
-        }
+        public DateTimeOffset StartDate => (DateTimeOffset)(_startDate ?? (_startDate = DateTimeOffset.FromUnixTimeSeconds(Date)));
 
         private DateTimeOffset? _endDate;
         /// <summary>
         /// Gets the end date
         /// </summary>
-        public DateTimeOffset EndDate
-        {
-            get { return (DateTimeOffset)(_endDate ?? (_endDate = StartDate.AddSeconds(Duration))); }
-        }
+        public DateTimeOffset EndDate => (DateTimeOffset)(_endDate ?? (_endDate = StartDate.AddSeconds(Duration)));
     }
 }

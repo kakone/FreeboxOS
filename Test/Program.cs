@@ -1,8 +1,9 @@
-﻿using FreeboxOS;
-using Microsoft.Extensions.DependencyInjection;
+﻿#pragma warning disable IDE1006
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using FreeboxOS;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Test
 {
@@ -27,3 +28,4 @@ namespace Test
         }
     }
 }
+#pragma warning restore IDE1006

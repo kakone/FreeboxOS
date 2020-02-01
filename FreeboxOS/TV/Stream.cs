@@ -16,7 +16,7 @@ namespace FreeboxOS.TV
         [JsonPropertyName("rtsp")]
         public string Url
         {
-            get { return _url; }
+            get => _url;
             set
             {
                 _url = value;
@@ -35,7 +35,7 @@ namespace FreeboxOS.TV
         [JsonPropertyName("quality")]
         public string QualityText
         {
-            get { return Quality.ToString(); }
+            get => Quality.ToString();
             set
             {
                 if (string.IsNullOrEmpty(value))

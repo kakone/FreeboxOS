@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>Latest</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Stéphane Mitermite</Authors>
     <Company>Stéphane Mitermite</Company>
@@ -12,6 +13,7 @@
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>freebox</PackageTags>
     <Copyright></Copyright>
+    <Version>1.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -14,7 +14,8 @@ namespace FreeboxOS
         public Api(IFreeboxOSClient freeboxOSClient)
         {
             FreeboxOSClient = freeboxOSClient;
-            ApiName = GetType().Name[..^3].ToLower();
+            var typeName = GetType().Name;
+            ApiName = typeName.Substring(0, typeName.Length - 3).ToLower();
         }
 
         private IFreeboxOSClient FreeboxOSClient { get; }

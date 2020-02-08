@@ -1,12 +1,12 @@
-﻿using FreeboxOS.Resources;
-using Nito.AsyncEx;
-using System;
+﻿using System;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 using System.Threading.Tasks;
+using FreeboxOS.Resources;
+using Nito.AsyncEx;
 using Zeroconf;
 
 namespace FreeboxOS
@@ -84,14 +84,7 @@ namespace FreeboxOS
             return false;
         }
 
-        /// <summary>
-        /// API method call
-        /// </summary>
-        /// <typeparam name="T">result type</typeparam>
-        /// <param name="apiUrl">api URL</param>
-        /// <param name="method">method to call</param>
-        /// <param name="parameters">method parameters</param>
-        /// <returns>call result</returns>
+        /// <inheritdoc/>
         public async Task<T> GetAsync<T>(string apiUrl, string method, params object[] parameters)
         {
             await InitAsync();
@@ -109,9 +102,7 @@ namespace FreeboxOS
             return result.Object;
         }
 
-        /// <summary>
-        /// Releases all resources used by the current <see cref="FreeboxOSClient"/> object
-        /// </summary>
+        /// <inheritdoc/>
         public void Dispose()
         {
             RootCertificates.Dispose();

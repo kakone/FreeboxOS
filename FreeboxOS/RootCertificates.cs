@@ -76,9 +76,7 @@ namespace FreeboxOS
             "d5jENIZChM8TnDXJzqc+mu00cI3icn9bV9flYCXLTIsprB21wVSMh0XeBGylKxeB" +
             "S27oDfFq04XSox7JM9HdTt2hLK96x1T7FpFrBTnALzb7vHv9MhXqAT90fPR/8A==");
 
-        /// <summary>
-        /// Releases all resources used by the current <see cref="RootCertificates"/> object
-        /// </summary>
+        /// <inheritdoc/>
         public void Dispose()
         {
             foreach (var certificate in Items)

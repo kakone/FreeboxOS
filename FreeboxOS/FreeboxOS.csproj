@@ -13,7 +13,7 @@
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>freebox</PackageTags>
     <Copyright></Copyright>
-    <Version>1.1</Version>
+    <Version>1.2</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -28,7 +28,6 @@
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.1" />
     <PackageReference Include="Nito.AsyncEx" Version="5.0.0" />
-    <PackageReference Include="Scrutor" Version="3.1.0" />
     <PackageReference Include="System.Text.Json" Version="4.7.0" />
     <PackageReference Include="Zeroconf" Version="3.3.2" />
   </ItemGroup>

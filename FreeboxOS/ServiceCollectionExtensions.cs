@@ -16,10 +16,7 @@ namespace FreeboxOS
         {
             services.AddScoped<IRootCertificates, RootCertificates>();
             services.AddScoped<IFreeboxOSClient, FreeboxOSClient>();
-            services.Scan(scan => scan.FromAssemblyOf<Api>()
-                .AddClasses(classes => classes.AssignableTo<Api>())
-                .AsMatchingInterface()
-                .WithScopedLifetime());
+            services.AddScoped<ITVApi, TVApi>();
             return services;
         }
     }

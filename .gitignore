@@ -350,3 +350,5 @@ MigrationBackup/
 .ionide/
 /FreeboxOS/FreeboxOS.xml
 /Test/Test.xml
+/nuget pack.bat
+/nuget.exe

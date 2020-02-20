@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>FreeboxOS</id>
+    <version>1.3.0</version>
+    <authors>Stéphane Mitermite</authors>
+    <owners>Stéphane Mitermite</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">LGPL-2.1-only</license>
+    <projectUrl>https://github.com/kakone/freeboxos</projectUrl>
+    <description>Freebox OS TV API</description>
+    <tags>freebox</tags>
+    <dependencies>
+      <group targetFramework="uap10.0">
+        <dependency id="Microsoft.Extensions.Caching.Memory" version="3.1.2" />
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="3.1.2" />
+        <dependency id="Nito.AsyncEx" version="5.0.0" />
+        <dependency id="System.Text.Json" version="4.7.1" />
+        <dependency id="ZeroConf" version="3.3.2" />
+      </group>
+      <group targetFramework="netstandard20">
+        <dependency id="Microsoft.Extensions.Caching.Memory" version="3.1.2" />
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="3.1.2" />
+        <dependency id="Nito.AsyncEx" version="5.0.0" />
+        <dependency id="System.Text.Json" version="4.7.1" />
+        <dependency id="ZeroConf" version="3.3.2" />
+      </group>    
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="FreeboxOS.UWP\bin\Release\FreeboxOS**.dll" target="lib\uap10.0" />
+    <file src="FreeboxOS.UWP\bin\Release\FreeboxOS**.xml" target="lib\uap10.0" />
+    
+    <file src="FreeboxOS.NetStandard\bin\Release\netstandard2.0\FreeboxOS**.dll" target="lib\netstandard20" />
+    <file src="FreeboxOS.NetStandard\bin\Release\netstandard2.0\FreeboxOS**.xml" target="lib\netstandard20" />
+  </files>
+</package>

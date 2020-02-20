@@ -14,9 +14,8 @@ namespace FreeboxOS
         /// <returns>a reference to the <paramref name="services"/> instance</returns>
         public static IServiceCollection AddFreeboxOSAPI(this IServiceCollection services)
         {
-            services.AddScoped<IRootCertificates, RootCertificates>();
-            services.AddScoped<IFreeboxOSClient, FreeboxOSClient>();
-            services.AddScoped<ITVApi, TVApi>();
+            ServiceManager.AddServices(services);
+            services.AddScoped<IHttpClient, HttpClient>();
             return services;
         }
     }

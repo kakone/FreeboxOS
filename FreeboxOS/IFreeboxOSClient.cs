@@ -1,12 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace FreeboxOS
 {
     /// <summary>
     /// Freebox OS client interface
     /// </summary>
-    public interface IFreeboxOSClient : IDisposable
+    public interface IFreeboxOSClient
     {
         /// <summary>
         /// API method call

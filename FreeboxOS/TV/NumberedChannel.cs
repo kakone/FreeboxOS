@@ -24,6 +24,6 @@ namespace FreeboxOS.TV
         /// Gets or sets the streams
         /// </summary>
         [JsonPropertyName("streams")]
-        public IEnumerable<Stream> Streams { get; set; }
+        public IEnumerable<Stream> Streams { get; set; } = null!;
     }
 }

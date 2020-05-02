@@ -11,49 +11,49 @@ namespace FreeboxOS
         /// Gets or sets the identifier
         /// </summary>
         [JsonPropertyName("uid")]
-        public string Uid { get; set; }
+        public string Uid { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the device name
         /// </summary>
         [JsonPropertyName("device_name")]
-        public string DeviceName { get; set; }
+        public string DeviceName { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the box model
         /// </summary>
         [JsonPropertyName("box_model")]
-        public string BoxModel { get; set; }
+        public string BoxModel { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the box model name
         /// </summary>
         [JsonPropertyName("box_model_name")]
-        public string BoxModelName { get; set; }
+        public string BoxModelName { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the API version
         /// </summary>
         [JsonPropertyName("api_version")]
-        public string ApiVersion { get; set; }
+        public string ApiVersion { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the API base URL
         /// </summary>
         [JsonPropertyName("api_base_url")]
-        public string ApiBaseUrl { get; set; }
+        public string ApiBaseUrl { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the device type
         /// </summary>
         [JsonPropertyName("device_type")]
-        public string DeviceType { get; set; }
+        public string DeviceType { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the API domain
         /// </summary>
         [JsonPropertyName("api_domain")]
-        public string ApiDomain { get; set; }
+        public string ApiDomain { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets a value indicating whether the HTTPS is available

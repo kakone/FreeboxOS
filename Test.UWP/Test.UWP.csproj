@@ -162,10 +162,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FreeboxOS.UWP\FreeboxOS.UWP.csproj">
-      <Project>{89d346e3-dd64-42fd-b15e-5306985d9524}</Project>
-      <Name>FreeboxOS.UWP</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FreeboxOS\FreeboxOS.csproj">
       <Project>{E7037B2B-FFEA-4156-A380-C0500F3EAE5C}</Project>
       <Name>FreeboxOS</Name>

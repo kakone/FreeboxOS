@@ -13,21 +13,18 @@ namespace FreeboxOS
     /// <summary>
     /// HTTP client
     /// </summary>
-    public class HttpClient : IHttpClient
+    public class HttpClient : HttpClientBase
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpClient"/> class
         /// </summary>
         /// <param name="rootCertificates">root certificates</param>
-        public HttpClient(IRootCertificates rootCertificates)
+        public HttpClient(IRootCertificates rootCertificates) : base(rootCertificates)
         {
-            RootCertificates = rootCertificates;
         }
 
-        private IRootCertificates RootCertificates { get; }
-
         /// <inheritdoc/>
-        public async Task<T> GetAsync<T>(string requestUri)
+        public override async Task<T> GetAsync<T>(string requestUri)
         {
             var filter = new HttpBaseProtocolFilter();
             filter.CacheControl.ReadBehavior = HttpCacheReadBehavior.NoCache;

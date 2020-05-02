@@ -24,7 +24,7 @@ namespace Test
             var epg = (await tv.GetEpgAsync(now)).First();
             var program = epg.Value[now];
             Console.WriteLine($"Current program on {channels.First(c => c.Id == epg.Key).Name}: {program.Title} " +
-                $"({program.StartDate.TimeOfDay.ToString("hh\\:mm")} - {program.EndDate.TimeOfDay.ToString("hh\\:mm")})");
+                $"({program.StartDate.TimeOfDay:hh\\:mm} - {program.EndDate.TimeOfDay:hh\\:mm})");
         }
     }
 }

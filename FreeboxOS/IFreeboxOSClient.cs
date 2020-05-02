@@ -15,6 +15,6 @@ namespace FreeboxOS
         /// <param name="method">method to call</param>
         /// <param name="parameters">method parameters</param>
         /// <returns>call result</returns>
-        Task<T> GetAsync<T>(string apiUrl, string method, params object[] parameters);
+        Task<T> GetAsync<T>(string apiUrl, string method, params object[] parameters) where T : class;
     }
 }

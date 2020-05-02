@@ -17,12 +17,12 @@ namespace FreeboxOS.TV
         /// Gets or sets the name of the package
         /// </summary>
         [JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the state of the package
         /// </summary>
         [JsonPropertyName("state")]
-        public string State { get; set; }
+        public string State { get; set; } = null!;
     }
 }

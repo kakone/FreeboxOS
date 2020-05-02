@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 
 namespace FreeboxOS
 {
@@ -11,6 +12,7 @@ namespace FreeboxOS
         /// Initializes a new instance of the <see cref="Api"/> class
         /// </summary>
         /// <param name="freeboxOSClient"></param>
+        [SuppressMessage("Style", "IDE0057:Use range operator")]
         public Api(IFreeboxOSClient freeboxOSClient)
         {
             FreeboxOSClient = freeboxOSClient;
@@ -32,7 +34,7 @@ namespace FreeboxOS
         /// <param name="method">method to call</param>
         /// <param name="parameters">method parameters</param>
         /// <returns>call result</returns>
-        protected Task<T> GetAsync<T>(string method, params object[] parameters)
+        protected Task<T> GetAsync<T>(string method, params object[] parameters) where T : class
         {
             return FreeboxOSClient.GetAsync<T>(ApiName, method, parameters);
         }

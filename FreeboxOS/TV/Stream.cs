@@ -9,7 +9,7 @@ namespace FreeboxOS.TV
     /// </summary>
     public class Stream
     {
-        private string _url;
+        private string _url = null!;
         /// <summary>
         /// Gets or sets the url of the stream
         /// </summary>

@@ -11,7 +11,7 @@ namespace FreeboxOS.TV
         /// Gets or sets the channel identifier
         /// </summary>
         [JsonPropertyName("uuid")]
-        public string Id { get; set; }
+        public string Id { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets a value indicating wether the channel is available or not

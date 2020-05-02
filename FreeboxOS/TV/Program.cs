@@ -12,25 +12,25 @@ namespace FreeboxOS.TV
         /// Gets or sets the identifier
         /// </summary>
         [JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the subtitle
         /// </summary>
         [JsonPropertyName("sub_title")]
-        public string SubTitle { get; set; }
+        public string? SubTitle { get; set; }
 
         /// <summary>
         /// Gets or sets the title
         /// </summary>
         [JsonPropertyName("title")]
-        public string Title { get; set; }
+        public string Title { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets the category name
         /// </summary>
         [JsonPropertyName("category_name")]
-        public string Category { get; set; }
+        public string? Category { get; set; }
 
         /// <summary>
         /// Gets or sets the duration (in seconds)

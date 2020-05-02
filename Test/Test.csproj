@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FreeboxOS.NetStandard\FreeboxOS.NetStandard.csproj" />
+    <ProjectReference Include="..\FreeboxOS\FreeboxOS.csproj" />
   </ItemGroup>
 
 </Project>

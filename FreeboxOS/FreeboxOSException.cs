@@ -18,7 +18,7 @@ namespace FreeboxOS
         /// Initializes a new instance of the <see cref="FreeboxOSException"/> class
         /// </summary>
         /// <param name="message">the message that describes the error</param>
-        public FreeboxOSException(string message) : base(message)
+        public FreeboxOSException(string? message) : base(message)
         {
         }
 
@@ -27,7 +27,7 @@ namespace FreeboxOS
         /// </summary>
         /// <param name="errorCode">error code</param>
         /// <param name="message">the message that describes the error</param>
-        public FreeboxOSException(string errorCode, string message) : this(message)
+        public FreeboxOSException(string? errorCode, string? message) : this(message)
         {
             ErrorCode = errorCode;
         }
@@ -38,7 +38,7 @@ namespace FreeboxOS
         /// <param name="errorCode">error code</param>
         /// <param name="message">the message that describes the error</param>
         /// <param name="innerException">the exception that is the cause of the current exception, or a null reference if no inner exception is specified</param>
-        public FreeboxOSException(string errorCode, string message, Exception innerException) : base(message, innerException)
+        public FreeboxOSException(string? errorCode, string? message, Exception? innerException) : base(message, innerException)
         {
             ErrorCode = errorCode;
         }
@@ -46,6 +46,6 @@ namespace FreeboxOS
         /// <summary>
         /// Gets the error code
         /// </summary>
-        public string ErrorCode { get; }
+        public string? ErrorCode { get; }
     }
 }

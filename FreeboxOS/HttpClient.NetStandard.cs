@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace FreeboxOS
@@ -12,18 +10,15 @@ namespace FreeboxOS
     /// <summary>
     /// HTTP client
     /// </summary>
-    public class HttpClient : IHttpClient
+    public class HttpClient : HttpClientBase
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpClient"/> class
         /// </summary>
         /// <param name="rootCertificates">root certificates</param>
-        public HttpClient(IRootCertificates rootCertificates)
+        public HttpClient(IRootCertificates rootCertificates) : base(rootCertificates)
         {
-            RootCertificates = rootCertificates;
         }
-
-        private IRootCertificates RootCertificates { get; }
 
         private bool ValidateCertificate(HttpRequestMessage request, X509Certificate2 certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {
@@ -50,17 +45,13 @@ namespace FreeboxOS
             return false;
         }
 
-        /// <inheritdoc/>
-        public async Task<T> GetAsync<T>(string requestUri)
+        /// <summary>
+        /// Creates an HTTP client handler instance
+        /// </summary>
+        /// <returns>a new HTTP client handler instance</returns>
+        protected override Task<HttpClientHandler> CreateHttpClientHandlerAsync()
         {
-            using var httpClientHandler = new HttpClientHandler()
-            {
-                ServerCertificateCustomValidationCallback = ValidateCertificate
-            };
-
-            using var httpClient = new System.Net.Http.HttpClient(httpClientHandler);
-            httpClient.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue() { NoCache = true };
-            return await JsonSerializer.DeserializeAsync<T>(await httpClient.GetStreamAsync(requestUri));
+            return Task.FromResult(new HttpClientHandler() { ServerCertificateCustomValidationCallback = ValidateCertificate });
         }
     }
 }

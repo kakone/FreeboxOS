@@ -24,7 +24,7 @@ namespace FreeboxOS
 
         private IHttpClient HttpClient { get; }
         private AsyncLock Mutex { get; } = new AsyncLock();
-        private string BaseURL { get; set; }
+        private string? BaseURL { get; set; }
 
         private void SetBaseUrl(string apiDomain, int httpsPort, string apiBaseUrl)
         {
@@ -55,7 +55,7 @@ namespace FreeboxOS
         }
 
         /// <inheritdoc/>
-        public async Task<T> GetAsync<T>(string apiUrl, string method, params object[] parameters)
+        public async Task<T> GetAsync<T>(string apiUrl, string method, params object[] parameters) where T : class
         {
             await InitAsync();
             var result = await HttpClient.GetAsync<Result<T>>($"{BaseURL}/{apiUrl}/{method}/{string.Join("/", parameters)}");

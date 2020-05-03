@@ -3,7 +3,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Windows.Networking.Sockets;
 using Windows.Web.Http.Filters;
@@ -24,7 +23,7 @@ namespace FreeboxOS
         }
 
         /// <inheritdoc/>
-        public override async Task<T> GetAsync<T>(string requestUri)
+        public override async Task<Stream> GetStreamAsync(string requestUri)
         {
             var filter = new HttpBaseProtocolFilter();
             filter.CacheControl.ReadBehavior = HttpCacheReadBehavior.NoCache;
@@ -40,7 +39,7 @@ namespace FreeboxOS
             {
                 throw new SecurityException();
             }
-            return await JsonSerializer.DeserializeAsync<T>((await response.Content.ReadAsInputStreamAsync()).AsStreamForRead());
+            return (await response.Content.ReadAsInputStreamAsync()).AsStreamForRead();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
@@ -35,12 +36,18 @@ namespace FreeboxOS
         }
 
         /// <inheritdoc/>
-        public virtual async Task<T> GetAsync<T>(string requestUri)
+        public virtual async Task<Stream> GetStreamAsync(string requestUri)
         {
             using var httpClientHandler = await CreateHttpClientHandlerAsync();
             using var httpClient = new System.Net.Http.HttpClient(httpClientHandler);
             httpClient.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue() { NoCache = true };
-            return await JsonSerializer.DeserializeAsync<T>(await httpClient.GetStreamAsync(requestUri));
+            return await httpClient.GetStreamAsync(requestUri);
+        }
+
+        /// <inheritdoc/>
+        public virtual async Task<T> GetAsync<T>(string requestUri)
+        {
+            return await JsonSerializer.DeserializeAsync<T>(await GetStreamAsync(requestUri));
         }
     }
 }

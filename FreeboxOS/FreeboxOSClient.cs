@@ -24,16 +24,18 @@ namespace FreeboxOS
 
         private IHttpClient HttpClient { get; }
         private AsyncLock Mutex { get; } = new AsyncLock();
+        private string? URL { get; set; }
         private string? BaseURL { get; set; }
 
         private void SetBaseUrl(string apiDomain, int httpsPort, string apiBaseUrl)
         {
-            BaseURL = $"https://{apiDomain}:{httpsPort}{apiBaseUrl}v{API_VERSION}";
+            URL = $"https://{apiDomain}:{httpsPort}";
+            BaseURL = $"{URL}{apiBaseUrl}v{API_VERSION}";
         }
 
-        private async Task InitAsync()
+        private async ValueTask InitAsync()
         {
-            if (BaseURL != null)
+            if (URL != null)
             {
                 return;
             }
@@ -52,6 +54,13 @@ namespace FreeboxOS
                     SetBaseUrl(properties["api_domain"], Convert.ToInt32(properties["https_port"]), properties["api_base_url"]);
                 }
             }
+        }
+
+        /// <inheritdoc/>
+        public async ValueTask<string> GetUrlAsync()
+        {
+            await InitAsync();
+            return URL!;
         }
 
         /// <inheritdoc/>

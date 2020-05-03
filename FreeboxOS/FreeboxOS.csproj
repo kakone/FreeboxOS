@@ -16,7 +16,7 @@
     <PackageDescription>Freebox OS TV API</PackageDescription>
     <PackageTags>freebox</PackageTags>
     <Description>Freebox OS TV API</Description>
-    <Version>1.4.0</Version>
+    <Version>1.5.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -8,6 +8,12 @@ namespace FreeboxOS
     public interface IFreeboxOSClient
     {
         /// <summary>
+        /// Gets the Freebox OS URL
+        /// </summary>
+        /// <returns>the Freebox OS URL</returns>
+        public ValueTask<string> GetUrlAsync();
+
+        /// <summary>
         /// API method call
         /// </summary>
         /// <typeparam name="T">result type</typeparam>

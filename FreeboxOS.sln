@@ -7,19 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreeboxOS", "FreeboxOS\Free
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{B4A20E10-7C5F-4211-B971-AF0C34459D86}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{D82F03DD-42BD-4787-9098-84FF801552AD}"
-	ProjectSection(SolutionItems) = preProject
-		LICENSE = LICENSE
-		README.md = README.md
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{88EBFC2E-057A-475C-809B-62A212101221}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
+		LICENSE = LICENSE
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Android", "Test.Android\Test.Android.csproj", "{9D7157F6-5E01-4920-AEF2-832D1640A34A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.Android", "Test.Android\Test.Android.csproj", "{9D7157F6-5E01-4920-AEF2-832D1640A34A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

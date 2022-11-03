@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Test.Android</string>
-    <string name="action_settings">Settings</string>
+    <string name="test">TEST</string>
 </resources>

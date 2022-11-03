@@ -1,22 +1,22 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace FreeboxOS
+namespace FreeboxOS;
+
+/// <summary>
+/// Extensions class for <see cref="IServiceCollection"/>
+/// </summary>
+public static class ServiceCollectionExtensions
 {
     /// <summary>
-    /// Extensions class for <see cref="IServiceCollection"/>
+    /// Adds the Freebox OS services to the specified <see cref="IServiceCollection"/>
     /// </summary>
-    public static class ServiceCollectionExtensions
+    /// <param name="services">the <see cref="IServiceCollection"/> to add the services to</param>
+    /// <returns>a reference to the <paramref name="services"/> instance</returns>
+    public static IServiceCollection AddFreeboxOSAPI(this IServiceCollection services)
     {
-        /// <summary>
-        /// Adds the Freebox OS services to the specified <see cref="IServiceCollection"/>
-        /// </summary>
-        /// <param name="services">the <see cref="IServiceCollection"/> to add the services to</param>
-        /// <returns>a reference to the <paramref name="services"/> instance</returns>
-        public static IServiceCollection AddFreeboxOSAPI(this IServiceCollection services)
-        {
-            ServiceManager.AddServices(services);
-            services.AddScoped<IHttpClient, HttpClient>();
-            return services;
-        }
+        services.AddScoped<IRootCertificates, RootCertificates>();
+        services.AddScoped<IFreeboxOSClient, FreeboxOSClient>();
+        services.AddScoped<ITVApi, TVApi>();
+        return services;
     }
 }

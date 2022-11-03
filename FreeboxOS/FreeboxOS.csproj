@@ -1,49 +1,15 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;uap10.0.16299;monoandroid44</TargetFrameworks>
-    <LangVersion>Latest</LangVersion>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' ">true</GeneratePackageOnBuild>
-    <PackageId>FreeboxOS</PackageId>
-    <Authors>Stéphane Mitermite</Authors>
-    <Owners>Stéphane Mitermite</Owners>
-    <PackageLicenseExpression>LGPL-2.1-only</PackageLicenseExpression>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/kakone/freeboxos</RepositoryUrl>
-    <PackageDescription>Freebox OS TV API</PackageDescription>
-    <PackageTags>freebox</PackageTags>
-    <Description>Freebox OS TV API</Description>
-    <Version>1.6.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.3" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.3" />
-    <PackageReference Include="Nito.AsyncEx" Version="5.0.0" />
-    <PackageReference Include="System.Text.Json" Version="4.7.1" />
-    <PackageReference Include="Zeroconf" Version="3.3.16" />
-
-    <Compile Remove="**\*.NetStandard.*" />
-    <Compile Remove="**\*.UWP.*" />
-    <Compile Remove="**\*.Android.*" />
-    <None Include="**\*.NetStandard.*" />
-    <None Include="**\*.UWP.*" />
-    <None Include="**\*.Android.*" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Zeroconf" Version="3.6.11" />
   </ItemGroup>
-
-  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard'))">
-    <Compile Include="**\*.NetStandard.*" />
-  </ItemGroup>
-
-  <ItemGroup Condition="$(TargetFramework.StartsWith('uap'))">
-    <Compile Include="**\*.UWP.*" />
-  </ItemGroup>
-
-  <ItemGroup Condition="$(TargetFramework.StartsWith('monoandroid'))">
-    <Compile Include="**\*.Android.*" />
-  </ItemGroup> 
 
 </Project>

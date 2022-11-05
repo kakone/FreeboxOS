@@ -20,12 +20,37 @@ public class FreeboxOSClient : IFreeboxOSClient
     public FreeboxOSClient(IRootCertificates rootCertificates)
     {
         RootCertificates = rootCertificates;
+        HttpMessageHandler = CreateHttpMessageHandler();
     }
 
     private IRootCertificates RootCertificates { get; }
-    private SemaphoreSlim Lock { get; } = new SemaphoreSlim(1, 1);
-    private string? URL { get; set; }
     private string? BaseURL { get; set; }
+    private HttpMessageHandler HttpMessageHandler { get; }
+
+    /// <inheritdoc/>
+    public string? URL { get; private set; }
+
+    /// <inheritdoc/>
+    public HttpMessageHandler CreateHttpMessageHandler()
+    {
+        return new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback = (message, cert, chain, _) =>
+            {
+                if (chain == null || cert == null)
+                {
+                    return true;
+                }
+                chain.ChainPolicy.RevocationMode = X509RevocationMode.NoCheck;
+                chain.ChainPolicy.TrustMode = X509ChainTrustMode.CustomRootTrust;
+                foreach (var rootCertificate in RootCertificates)
+                {
+                    chain.ChainPolicy.CustomTrustStore.Add(rootCertificate);
+                }
+                return chain.Build(cert);
+            }
+        };
+    }
 
     private void SetBaseUrl(string apiDomain, int httpsPort, string apiBaseUrl)
     {
@@ -35,72 +60,42 @@ public class FreeboxOSClient : IFreeboxOSClient
 
     private async Task<T> GetAsync<T>(string requestUri) where T : class
     {
-        using var httpClientHandler = new HttpClientHandler();
-        httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, _) =>
-        {
-            if (chain == null || cert == null)
-            {
-                return true;
-            }
-            chain.ChainPolicy.RevocationMode = X509RevocationMode.NoCheck;
-            chain.ChainPolicy.TrustMode = X509ChainTrustMode.CustomRootTrust;
-            foreach (var rootCertificate in RootCertificates)
-            {
-                chain.ChainPolicy.CustomTrustStore.Add(rootCertificate);
-            }
-            return chain.Build(cert);
-        };
-        using var httpClient = new HttpClient(httpClientHandler);
+        using var httpClient = new HttpClient(HttpMessageHandler, false);
         return (await httpClient.GetFromJsonAsync<T>(requestUri))!;
     }
 
-    private async ValueTask InitAsync()
+    /// <inheritdoc/>
+    public async Task<string> InitAsync()
     {
-        if (URL != null)
-        {
-            return;
-        }
-
-        await Lock.WaitAsync();
+        IZeroconfHost? freeboxServer;
         try
         {
-            IZeroconfHost? freeboxServer;
-            try
-            {
-                freeboxServer = (await ZeroconfResolver.ResolveAsync(PROTOCOL_NAME))?.FirstOrDefault();
-            }
-            catch (NetworkInformationException)
-            {
-                freeboxServer = null;
-            }
-            if (freeboxServer == null)
-            {
-                var version = await GetAsync<Version>("https://mafreebox.freebox.fr/api_version");
-                SetBaseUrl(version.ApiDomain, version.HttpsPort, version.ApiBaseUrl);
-            }
-            else
-            {
-                var properties = freeboxServer.Services.First().Value.Properties.First();
-                SetBaseUrl(properties["api_domain"], Convert.ToInt32(properties["https_port"]), properties["api_base_url"]);
-            }
+            freeboxServer = (await ZeroconfResolver.ResolveAsync(PROTOCOL_NAME))?.FirstOrDefault();
         }
-        finally
+        catch (NetworkInformationException)
         {
-            Lock.Release();
+            freeboxServer = null;
         }
-    }
-
-    /// <inheritdoc/>
-    public async ValueTask<string> GetUrlAsync()
-    {
-        await InitAsync();
+        if (freeboxServer == null)
+        {
+            var version = await GetAsync<Version>("https://mafreebox.freebox.fr/api_version");
+            SetBaseUrl(version.ApiDomain, version.HttpsPort, version.ApiBaseUrl);
+        }
+        else
+        {
+            var properties = freeboxServer.Services.Values.First().Properties[0];
+            SetBaseUrl(properties["api_domain"], Convert.ToInt32(properties["https_port"]), properties["api_base_url"]);
+        }
         return URL!;
     }
 
     /// <inheritdoc/>
     public async Task<T> GetAsync<T>(string apiUrl, string method, params object[] parameters) where T : class
     {
-        await InitAsync();
+        if (BaseURL == null)
+        {
+            throw new Exception($"You must call {nameof(IFreeboxOSClient)}.{nameof(InitAsync)} method first to find the Freebox");
+        }
         var result = await GetAsync<Result<T>>($"{BaseURL}/{apiUrl}/{method}/{string.Join("/", parameters)}");
         if (!result.Success)
         {

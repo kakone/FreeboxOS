@@ -17,5 +17,5 @@ public class Channel : ChannelBase
     /// Gets or sets the logo URL
     /// </summary>
     [JsonPropertyName("logo_url")]
-    public string LogoUrl { get; set; } = null!;
+    public string LogoURL { get; set; } = null!;
 }

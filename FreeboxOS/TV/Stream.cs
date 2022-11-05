@@ -13,7 +13,7 @@ public class Stream
     /// Gets or sets the url of the stream
     /// </summary>
     [JsonPropertyName("rtsp")]
-    public string Url
+    public string URL
     {
         get => _url;
         set
@@ -45,7 +45,7 @@ public class Stream
             }
 
             Quality = Enum.TryParse(value, true, out Quality q) ? q : Quality.SD;
-            UpdateQuality(Url);
+            UpdateQuality(URL);
         }
     }
 

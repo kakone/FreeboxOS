@@ -6,10 +6,20 @@
 public interface IFreeboxOSClient
 {
     /// <summary>
-    /// Gets the Freebox OS URL
+    /// Gets the Freebox URL
     /// </summary>
-    /// <returns>the Freebox OS URL</returns>
-    public ValueTask<string> GetUrlAsync();
+    string? URL { get; }
+
+    /// <summary>
+    /// Creates an HTTP message handler to call the Freebox OS API
+    /// </summary>
+    HttpMessageHandler CreateHttpMessageHandler();
+
+    /// <summary>
+    /// Searches the Freebox
+    /// </summary>
+    /// <returns>the Freebox URL</returns>
+    Task<string> InitAsync();
 
     /// <summary>
     /// API method call

@@ -20,7 +20,8 @@ public class MainActivity : Activity
     private async void TestButton_ClickAsync(object? sender, EventArgs e)
     {
         var services = new ServiceCollection().AddFreeboxOSAPI().BuildServiceProvider();
-        var tvApi = services.GetService<ITVApi>()!;
+        await services.GetRequiredService<IFreeboxOSClient>().InitAsync();
+        var tvApi = services.GetRequiredService<ITVApi>();
         var channels = await tvApi.GetChannelsAsync();
         Toast.MakeText(ApplicationContext, $"{channels.Count()} channels", ToastLength.Long)!.Show();
     }

@@ -12,7 +12,7 @@ await services.GetRequiredService<IFreeboxOSClient>().InitAsync();
 ```
 Then, use the `ITVApi` interface :
 ```csharp
-var tv = services.GetService<ITVApi>();
+var tv = services.GetRequiredService<ITVApi>();
 var packages = await tv.GetPackagesAsync();
 var numberedChannels = await tv.GetChannelsAsync(packages.First());
 ```

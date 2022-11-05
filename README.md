@@ -6,6 +6,10 @@ Add the Freebox OS services with the `AddFreeboxOSAPI` extension method :
 ```csharp
 services.AddFreeboxOSAPI();
 ```
+Call the `IFreeboxOSClient.InitAsync` method to search the Freebox :
+```csharp
+await services.GetRequiredService<IFreeboxOSClient>().InitAsync();
+```
 Then, use the `ITVApi` interface :
 ```csharp
 var tv = services.GetService<ITVApi>();
